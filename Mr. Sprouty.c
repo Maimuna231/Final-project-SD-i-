@@ -1,14 +1,3 @@
-/* Pet Plant Game
-   Description: Mystery seed boxes and interactive plant care game.
-   - Short story-style intro
-   - Greeting and ready check
-   - 3 mystery boxes (Cactus, Peace Lily, Rose)
-   - Actions: Show Happiness, Water, Give Sunlight, Check Growth, Exit
-   - Happiness numeric (0-100) + text mood
-   - Growth stages: Seed -> Sprout -> Young Plant -> Blooming -> Mature
-   - Guessing after every 5 steps, reveal and replay options
-   - No emojis
-*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,7 +6,7 @@
 
 #define MAX_HAPPINESS 100
 
-/* Function prototypes */
+/* Function  */
 void clear_input();
 int clamp(int val, int lo, int hi);
 void greeting();
@@ -29,27 +18,27 @@ void plant_reveal(int chosen_seed, int happiness);
 void game_exit();
 const char* plant_name(int id);
 
-/* Utility: clear any remaining characters in input buffer */
-void clear_input() {
+
+void clear_input() {        /* Utility: clear any remaining characters in input buffer */
     int c;
     while ((c = getchar()) != '\n' && c != EOF) {}
 }
 
-/* Clamp an integer value between lo and hi */
-int clamp(int val, int lo, int hi) {
+
+int clamp(int val, int lo, int hi) {      /* Clamp an integer value between lo and hi */
     if (val < lo) return lo;
     if (val > hi) return hi;
     return val;
 }
 
-/* Short intro + greeting */
+/* Introduction*/
 void greeting() {
     printf("Once upon a time you found a small wooden seed box on your doorstep.\n");
     printf("Inside there are three mysterious boxes — each hiding a different seed.\n\n");
     printf("Welcome to the Pet Plant Game!\n");
 }
 
-/* Show numeric happiness and mood */
+/* Show happiness and mood */
 void show_happiness(int happiness) {
     printf("\n--- Plant Happiness ---\n");
     printf("Happiness: %d/%d\n", happiness, MAX_HAPPINESS);
@@ -88,7 +77,7 @@ void show_growth_stage(int happiness) {
     printf("---------------------------\n\n");
 }
 
-/* Handle watering logic */
+/* Watering logic */
 void water_plant(int *happiness, int *last_action, int chosen_seed) {
     printf("You watered the plant.\n");
     if (chosen_seed == 0) { // Cactus
@@ -113,7 +102,7 @@ void water_plant(int *happiness, int *last_action, int chosen_seed) {
     *last_action = 0;
 }
 
-/* Handle sunlight logic */
+/* Sunlight logic */
 void give_sunlight(int *happiness, int *last_action, int chosen_seed) {
     printf("You gave sunlight to the plant.\n");
     if (chosen_seed == 0) { // Cactus
@@ -286,4 +275,5 @@ int main() {
     }
 
     return 0;
+
 }
